@@ -319,7 +319,13 @@ impl<'a> Parser<'a> {
                 if !item.snippet.is_empty() {
                     item.snippet.push_str(deser::LINE_SEPARATOR);
                 }
-                item.snippet.push_str(&line);
+                if id.ends_with("cheat.md") {
+                    if inside_snippet {
+                        item.snippet.push_str(&line);
+                    }
+                } else {
+                    item.snippet.push_str(&line);
+                }
             }
         }
 
